@@ -16,32 +16,32 @@ function preload(){
   BoyImage = loadImage("skateboarder.jpg");
   car1Image = loadImage("Car1.jpg");
   car2Image = loadImage("Car2.jpg");
-  CityImage = loadImage("City.jpg");
+  CityImage = loadImage("City.png");
   gameOverImage = loadImage("gameOver.png");
 
 }
 
 function setup() {
- createCanvas(600,200);
-
- Boy = createSprite(50,160,20,50);
- Boy.addImage("skateboarding", BoyImage);
- 
- Boy.scale=0.5;
+ createCanvas(600,600);
 
  City = createSprite(200,180,400,20);
  City.addImage("City",CityImage);
  City.x=City.width/2;
 
- gameOver = createSprite(300,100);
- gameOver.addImage("GAMEOVER",gameOverImg);
+ gameOver = createSprite(300,300);
+ gameOver.addImage("GAMEOVER",gameOverImage);
 
  gameOver.scale=0.5;
 
- invisiblePath = createSprite(200,190,400,10)
+ invisiblePath = createSprite(200,600,400,10)
  invisiblePath.visible = false;
 
  CarsGroup = createGroup();
+
+ Boy = createSprite(50,580,20,50);
+ Boy.addImage("skateboarding", BoyImage);
+ 
+ Boy.scale=0.4;
 
  Boy.setCollider("rectangle",0,0,Boy.width,Boy.height);
  Boy.debug = true;
@@ -104,7 +104,7 @@ function draw() {
 
 function spawnCars(){
   if (frameCount % 60 === 0){
-    var Cars = createSprite(600,165,10,40);
+    var Cars = createSprite(600,580,10,40);
     Cars.velocityX = -(6 + score/100);
     
      var rand = Math.round(random(1,2));
@@ -115,7 +115,7 @@ function spawnCars(){
                break;
        default: break;
      }           
-  Cars.scale = 0.5;
+  Cars.scale = 0.7;
   Cars.lifetime = 300;
 
   CarsGroup.add(Cars);
